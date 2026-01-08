@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黃裕承 - 專業個人履歷</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --sidebar-bg: #2c3e50;
+            --main-bg: #ffffff;
+            --text-primary: #2d3436;
+            --text-secondary: #636e72;
+            --accent-color: #3498db; 
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .resume-container {
+            display: flex;
+            background-color: var(--main-bg);
+            width: 100%;
+            max-width: 950px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            flex: 1;
+            background-color: var(--sidebar-bg);
+            padding: 50px 30px;
+            color: var(--white);
+            min-width: 280px;
+        }
+
+        .profile-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .profile-major {
+            color: #bdc3c7;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .section-title-sm {
+            font-size: 1rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 5px;
+        }
+
+        .contact-info {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .contact-info .label {
+            display: block;
+            font-weight: 500;
+            color: #bdc3c7;
+            font-size: 0.75rem;
+        }
+
+        .contact-link {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+            word-break: break-all;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-color);
+        }
+
+        /* 技能標籤 */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 40px;
+        }
+
+        .tag {
+            background-color: rgba(255,255,255,0.1);
+            color: #ecf0f1;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* 主內容區 */
+        .main-content {
+            flex: 2.5;
+            padding: 60px;
+        }
+
+        .section {
+            margin-bottom: 45px;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--sidebar-bg);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-header h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #eee;
+            margin-left: 20px;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .card {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #2d3436;
+        }
+
+        .card-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .card-subtitle {
+            font-size: 0.95rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .card-content {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .job-list {
+            padding-left: 18px;
+        }
+
+        .job-list li {
+            margin-bottom: 6px;
+        }
+
+        /* 按鈕 */
+        .floating-actions {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+        }
+        
+        .action-btn {
+            background-color: var(--sidebar-bg);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .action-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 850px) {
+            .resume-container { flex-direction: column; }
+            .sidebar { padding: 40px; }
+            .main-content { padding: 40px 30px; }
+        }
+
+        @media print {
+            body { padding: 0; background: white; }
+            .resume-container { box-shadow: none; border-radius: 0; max-width: 100%; }
+            .floating-actions { display: none; }
+            .sidebar { background-color: #2c3e50 !important; -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <aside class="sidebar">
+            <h1 class="profile-name">黃裕承</h1>
+            <span class="profile-major">資訊工程學系 | 大二學生</span>
+            
+            <h3 class="section-title-sm">聯絡資訊</h3>
+            <ul class="contact-info">
+                <li>
+                    <span class="label">電子郵件</span>
+                    <a href="mailto:Huang@email.com" class="contact-link">huang.yc@email.com</a>
+                </li>
+                <li>
+                    <span class="label">LinkedIn</span>
+                    <a href="#" class="contact-link">linkedin.com/in/huang123</a>
+                </li>
+                <li>
+                    <span class="label">GitHub / Portfolio</span>
+                    <a href="#" class="contact-link">github.com/Huang-Dev</a>
+                </li>
+                <li>
+                    <span class="label">所在地</span>
+                    台灣，台中市 (Taichung, Taiwan)
+                </li>
+            </ul>
+
+            <h3 class="section-title-sm">程式技能</h3>
+            <div class="tags-container">
+                <span class="tag">C++</span>
+                <span class="tag">Python</span>
+                <span class="tag">HTML</span>
+                <span class="tag">Data Structures</span>
+                <span class="tag">Git</span>
+            </div>
+
+            <h3 class="section-title-sm">核心特質</h3>
+            <div class="tags-container">
+                <span class="tag">解決問題能力</span>
+                <span class="tag">高壓環境適應</span>
+                <span class="tag">團隊溝通</span>
+                <span class="tag">實作導向</span>
+            </div>
+
+            <h3 class="section-title-sm">語言能力</h3>
+            <div class="tags-container">
+                <span class="tag">中文 (母語)</span>
+                <span class="tag">英文 (TOEIC 進修中)</span>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <section class="section">
+                <div class="section-header">
+                    <h2>自我簡介</h2>
+                </div>
+                <div class="about-text">
+                    <p>目前就讀資訊工程系二年級，具備紮實的邏輯思考與跨領域實務經驗。在校期間除了專注於程式設計與軟體開發基礎，亦透過餐飲與水電工程的工讀經驗，培養出極佳的抗壓性與解決現場問題的應變能力。我追求高效、精確的工作表現，並渴望將工程背景的嚴謹態度應用於未來的專業領域。</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2>教育背景</h2>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">亞洲大學 資訊工程學系</div>
+                        <div class="card-date">2024 - 2028 (預計)</div>
+                    </div>
+                    <div class="card-subtitle">學士學位 / 在讀</div>
+                    <div class="card-content">
+                        <p>核心課程：程式設計、離散數學、資料結構、電子學。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2>工作經歷</h2>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">水電工程</div>
+                        <div class="card-date">短期工讀</div>
+                    </div>
+                    <div class="card-subtitle">水電技術助理 / 學徒</div>
+                    <div class="card-content">
+                        <ul class="job-list">
+                            <li>協助室內電路配置與基礎配管作業，強化空間邏輯與實作能力。</li>
+                            <li>於高強度環境中配合團隊作業，確保工程進度與施工安全。</li>
+                            <li>負責工具管理與現場排障，培養細心檢查的職人態度。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">餐飲業</div>
+                        <div class="card-date">長期工讀</div>
+                    </div>
+                    <div class="card-subtitle">外場服務人員</div>
+                    <div class="card-content">
+                        <ul class="job-list">
+                            <li>執行顧客服務與流程管理，訓練多工處理 (Multi-tasking) 能力。</li>
+                            <li>處理顧客各類需求與突發狀況，具備優異的溝通協調基礎。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2>專案與榮譽</h2>
+                </div>
+                <div class="card">
+                    <div class="card-title">基礎資工實作專案</div>
+                    <div class="card-content">
+                        運用 C++ 開發基礎演算法模擬器，實現排序演算法視覺化邏輯。
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">校內學術活動參與</div>
+                    <div class="card-content">
+                        積極參與資工系專業研討會，持續關注大數據與人工智慧領域發展趨勢。
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div class="floating-actions">
+        <button class="action-btn" onclick="window.print()">匯出為專業 PDF</button>
+    </div>
+
+</body>
+</html>
